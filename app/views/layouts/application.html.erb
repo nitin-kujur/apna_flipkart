@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ApnaFlipkart</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="http://s.mlcdn.co/animate.css">
+
+<script type="text/javascript">
+  $.fn.extend({
+                 animateCss: function (animationName) {
+                   var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+                   $(this).addClass('animated ' + animationName).one(animationEnd, function() {
+                     $(this).removeClass('animated ' + animationName);
+                     });
+                 }
+              });
+</script>
+<style type="text/css">
+   .cross {
+          position: relative;
+          display: inline-block;
+      }
+        .cross::before {
+          border-bottom: 1px solid red;
+          -webkit-transform: skewY(-10deg);
+          transform: skewY(-10deg);
+
+          content: '';
+          width: 100%;
+          position: absolute;
+          right: 0;
+        top: 50%;
+      }
+</style>
+
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<%= render "/layouts/nav" %>
+	<div class="container">
+	 	  <div class="notice alert alert-success fade in" style="display:<%= if notice.blank? then 'none' end%>;">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+        <%= notice %>
+      </div>
+     	<div class="alert alert-danger fade in" style="display:<%= if alert.blank? then 'none' end%>;">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+        <%= alert %>
+      </div>
+     	
+
+     	<%= yield %>
+	</div>
+</body>
+</html>

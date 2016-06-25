@@ -1,0 +1,60 @@
+<h1>Welcome to Apna flipkart</h1>
+<% @prod_list.each do |p| %>
+	<div class="w3-card-2 w3-section w3-padding myCard w3-animate-top" style="margin-top:50px !important;">
+		<div class="row">
+			<div class="col-xs-4">
+				<img class="img-responsive center-block w3-section" style="max-height:400px;" src="<%= p.pimg_url %>">		
+			</div>	
+			<div class="col-xs-8 w3-section">
+				<h2><%= "#{p.pname} [product id: #{p.pid}]" %></h2>
+				<br/>
+				<p><strong>Category:</strong><%= p.category.title %></p>
+				<p><strong>Detailes:</strong></p>	
+				<% p.description.split("\n").each  do |d| %>
+				<p><%= d %></p>
+				<% end %>	
+				<% unless p.discount.blank? then %>
+					<p>MRP: <strong style="text-decoration:line-through; text-decoration-color: red;"><span class="cross">Rs.<%= number_with_precision(p.cost, precision: 2,delimiter: ',')%></span></strong></p>
+					<p><span>
+					<% if p.discount_type == "fixed" then %> 
+					  <p>Price: <strong>Rs.<%=  number_with_precision(new_price = (p.cost.to_f-p.discount.to_f), precision: 2,delimiter: ',') %></strong> @ discount of <strong>Rs.<%= p.discount %></strong></p>
+					<% elsif p.discount_type == "percent" then %>
+					  <p>Price: <strong>Rs.<%= number_with_precision(new_price = (p.cost.to_f-p.cost.to_f*p.discount.to_f*0.01), precision: 2,delimiter: ',') %></strong></p>
+					  @ discount of <strong><%= p.discount %>%</strong>
+					  <span>, Your Saving: <strong>Rs.<%= number_with_precision((p.cost.to_f-new_price.to_f), precision: 2,delimiter: ',') %></strong></span>
+					<% end%>
+					</span></p>
+				<% else %>
+					<p>Price: <strong>Rs.<%= number_with_precision(p.cost, precision: 2,delimiter: ',') %></strong></p>
+					
+				<% end %>
+				<%= link_to "Buy Now", root_path, class: 'btn btn-success pull-left' %>
+	            <%= link_to "Add to Cart", 'javascript:void(0)', class: 'btn btn-warning w3-margin-left', onclick: "addItemToCart(#{p.id})" %>
+			</div>	
+		</div>	
+	</div>
+	
+<% end %>
+<script type="text/javascript">
+	function addItemToCart(prodId){
+			$.ajax({
+			   url: 'cart/update',
+			   data: {
+			      product_id: prodId
+			   },
+			   error: function() {
+			   	  alert('data.itemCount');
+			      // $('#info').html('<p>An error has occurred</p>');
+			   },
+			   success: function(data) {
+			      $('#cart_count').html(data.itemCount);
+			   },
+			   type: 'GET'
+			});
+	}
+
+	$(document).ready(function(){
+		$('.myCard').animateCss('slideInDown');
+
+	});
+</script>

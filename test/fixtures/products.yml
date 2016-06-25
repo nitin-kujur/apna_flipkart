@@ -1,0 +1,20 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pid: 1
+  pname: "LeEco Le 1s Eco(Gold, 32 GB)"
+  pdetailes: "
+    5.5 inch FHD Touchscreen
+    3 GB RAM | 32 GB ROM
+    Camera 13 MP (Primary) + 5 MP (Secondary)
+    1.85 GHz MediaTek Helio X10 Octa Core Processor
+    Android v5.0.2 with EUI 5.5
+    Dual Sim (LTE + LTE)
+"
+  pimg_url: "http://img5a.flixcart.com/image/mobile/p/q/a/letv-le-1s-eco-na-400x400-imaegcqyaamyt9gx.jpeg"
+  pprice: "9999"
+  pdiscount: "100"
+  pdiscount_type: "fixed"
+two: {
+}
+  

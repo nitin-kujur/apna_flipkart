@@ -1,0 +1,32 @@
+   <div class="container">
+    <%= form_for :user, url: user_update_path(current_user), method: :get do |u| %>
+    	<h1><%= @user.first_name.present? ? @user.first_name : (/\w.+(?=@)/).match(@user.email)  %>'s Profile</h1>
+
+			<table class="table table-hover">
+	    
+			<tr>
+				<td>First Name :</td>
+				<td><%= u.text_field(:first_name, placeholder: 'Enter First Name') %></td>
+			</tr>
+
+			<tr>
+				<td>Last Name :</td>
+				<td><%= u.text_field(:last_name, placeholder: 'Enter Last Name') %></td>
+			</tr>
+
+			<tr>
+				<td>Mobile :</td>
+				<td><%= u.telephone_field(:mobile, placeholder: 'Enter Mobile Num.') %></td>
+			</tr>
+ 
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			</table>
+			<br/>
+			<%= u.submit("Update", class: "btn btn-success") %>
+			<%= link_to "Cancel", _back_url(), class: "btn btn-success" %>
+		<% end %>
+</div>
+

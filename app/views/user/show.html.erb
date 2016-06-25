@@ -1,0 +1,36 @@
+<div class="container">
+    <h1><%= @user.first_name.present? ? @user.first_name : (/\w.+(?=@)/).match(@user.email) %>'s Profile</h1>
+
+	<table class="table table-hover">
+		<tr>
+			<td>First Name : </td>
+			<td><%= @user.first_name.present? ? @user.first_name : "--" %></td>
+		</tr>
+
+		<tr>
+			<td>Last Name : </td>
+			<td><%= @user.last_name.present? ? @user.last_name : "--" %></td>
+		</tr>
+
+		<tr>
+			<td>Mobile : </td>
+			<td><%= @user.mobile.present? ? @user.mobile : "--" %></td>
+		</tr>
+
+		<tr>
+			<td>Email : </td>
+			<td><%= @user.email %></td>
+		</tr>
+
+		<tr>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+	<br/>
+	<%= link_to "Edit profile", user_edit_path(current_user), class: 'btn btn-success pull-left' %>
+	<%= link_to "Edit registration", edit_user_registration_path, class: 'btn btn-success w3-margin-left' %>
+	<br/>
+	
+</div>
+
