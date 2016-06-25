@@ -31,6 +31,7 @@ end
    else
    		display_text = self.email
    end	
-   display_text
+   display_text 
+   
  end
 end
