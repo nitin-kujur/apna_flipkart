@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   
   has_many :orders
   has_many :addresses
-  has_many :transactions
+  has_many :payment_transactions
   has_many :products
   has_one :cart
 

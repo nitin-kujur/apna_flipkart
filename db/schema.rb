@@ -87,6 +87,16 @@ ActiveRecord::Schema.define(version: 20160611095507) do
     t.datetime "updated_at",    null: false
   end
 
+  create_table "payment_transactions", force: :cascade do |t|
+    t.integer  "order_id"
+    t.integer  "user_id"
+    t.string   "status"
+    t.string   "type"
+    t.string   "mode"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "products", force: :cascade do |t|
     t.integer  "pid",                        null: false
     t.string   "pname"
@@ -100,16 +110,6 @@ ActiveRecord::Schema.define(version: 20160611095507) do
     t.integer  "quantity"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
-  end
-
-  create_table "transactions", force: :cascade do |t|
-    t.integer  "order_id"
-    t.integer  "user_id"
-    t.string   "status"
-    t.string   "type"
-    t.string   "mode"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
